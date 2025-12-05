@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYOB | Premium Party Essentials</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Navigation (Fixed to Top) -->
+    <nav class="fixed w-full top-0 z-[100] glass shadow-xl transition-all duration-300" id="navbar">
+        
+        <!-- Top Announcement -->
+        <div class="bg-[#aa8c2c] text-white text-[10px] font-bold py-1 overflow-hidden tracking-widest uppercase flex items-center">
+            <div class="animate-marquee">
+                ✨ Free Shipping on Orders Over ₹1000 &nbsp; • &nbsp; Use Code: BYOB15 for 15% Off &nbsp; • &nbsp; Premium Party Essentials &nbsp; • &nbsp; Delivering Pan-India ✨
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 py-2 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="javascript:void(0)" onclick="closeProductPage()" class="flex items-center gap-4 group">
+                <div class="h-14 border-[#d4af37] p-1 shadow-lg transition duration-500 group-hover:rotate-12 overflow-hidden">
+                    <img src="LOGO.png" alt="BYOB" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/1a0505/d4af37?text=B'">
+                </div>
+                <div class="flex flex-col">
+    <div class="flex items-center gap-2">
+        <span class="text-3xl font-black serif-font text-[#d4af37]">BYOB</span>
+
+        <!-- ✨ Shining Gold Signature Text -->
+        <span class="text-xs font-bold bg-clip-text text-transparent shining-gold tracking-wide">
+            By Vikash Mahanta
+        </span>
+    </div>
+
+    <span class="text-[0.6rem] tracking-[0.3em] text-white/70 uppercase">Party Essentials</span>
+</div>
+
+            </a>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-6 text-[#d4af37]">
+                <!-- Wishlist Icon -->
+                <button onclick="toggleWishlistPanel()" class="relative hover:text-white transition transform hover:scale-110" title="Wishlist">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                    </svg>
+                    <span id="wishlist-count" class="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full hidden border-2 border-[#1a0505]">0</span>
+                </button>
+
+                <!-- Profile Icon -->
+                <button onclick="handleStartParty()" class="relative p-2 hover:text-white transition transform hover:scale-110" title="Profile">
+                    <i class="fa-regular fa-user text-2xl"></i>
+                </button>
+
+                <!-- Cart Icon -->
+                <button onclick="toggleCart()" class="relative hover:text-white transition transform hover:scale-110" title="Cart">
+                    <i class="fa-solid fa-cart-shopping text-2xl"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full hidden border-2 border-[#1a0505]">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Wrapper -->
+    <div id="main-content-area" class="pt-[100px]">
+        
+        <!-- Hero Section -->
+        <header class="relative h-[85vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="hero_bg.png" class="w-full h-full object-cover animate-[pulse_10s_ease-in-out_infinite] scale-105" style="animation-duration: 20s;">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#1a0505] via-[#1a0505]/70 to-transparent"></div>
+            </div>
+            
+            <div class="relative z-10 text-center px-6 max-w-4xl mx-auto fade-in-up">
+                <span class="text-[#d4af37] tracking-[0.4em] uppercase text-sm font-bold mb-4 block">Est. 2023 • Premium Quality</span>
+                <h1 class="text-6xl md:text-8xl font-black mb-6 serif-font text-gradient leading-tight">Make Every Sip<br>Better</h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-10 font-light leading-relaxed">Curated artisanal mixers, crystal glassware, and gourmet garnishes for the discerning host.</p>
+                <button onclick="handleStartParty()" class="btn-gold-gradient px-10 py-4 rounded-full text-lg font-bold shadow-2xl tracking-wide">
+                    Start Your Party 🥳
+                </button>
+            </div>
+        </header>
+
+        <!-- Collections Section -->
+        <section class="py-20 container mx-auto px-6">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-[#1a0505] serif-font mb-4">The Collection</h2>
+                <div class="h-1 w-24 bg-[#d4af37] mx-auto"></div>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12 fade-in-up">
+                <button onclick="filterProducts('all')" class="category-btn active px-8 py-3 rounded-full border border-[#1a0505] font-bold transition hover:bg-[#1a0505] hover:text-[#d4af37] bg-[#1a0505] text-[#d4af37]">All</button>
+                <button onclick="filterProducts('mixers')" class="category-btn px-8 py-3 rounded-full border border-[#1a0505] font-bold text-[#1a0505] hover:bg-[#1a0505] hover:text-[#d4af37] transition">Mixers</button>
+                <button onclick="filterProducts('crockery')" class="category-btn px-8 py-3 rounded-full border border-[#1a0505] font-bold text-[#1a0505] hover:bg-[#1a0505] hover:text-[#d4af37] transition">Glassware</button>
+                <button onclick="filterProducts('candies')" class="category-btn px-8 py-3 rounded-full border border-[#1a0505] font-bold text-[#1a0505] hover:bg-[#1a0505] hover:text-[#d4af37] transition">Garnishes</button>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- JS Injection -->
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="py-20 bg-[#1a0505] text-center text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+            <div class="container mx-auto px-6 relative z-10 fade-in-up">
+                <i class="fa-solid fa-wine-glass text-5xl text-[#d4af37] mb-6"></i>
+                <h2 class="text-4xl serif-font font-bold mb-4">Join the Inner Circle</h2>
+                <p class="text-gray-400 mb-8 max-w-lg mx-auto">Get exclusive access to limited edition drops, cocktail recipes, and member-only discounts.</p>
+                <div class="flex max-w-md mx-auto bg-white/10 p-1 rounded-full backdrop-blur-sm border border-white/20">
+                    <input type="email" placeholder="Your email address" class="flex-grow bg-transparent px-6 py-3 text-white placeholder-gray-400 focus:outline-none">
+                    <button class="bg-[#d4af37] text-[#1a0505] px-8 py-3 rounded-full font-bold hover:bg-white transition">Subscribe</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="bg-[#f4f4f4] py-10 border-t border-gray-200">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row justify-around items-center gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-black text-[#1a0505] serif-font" id="stats-orders">0+</div>
+                    <div class="text-sm text-gray-500 uppercase tracking-wider font-bold mt-1">Orders Fulfilled</div>
+                </div>
+                <div class="hidden md:block w-px h-12 bg-gray-300"></div>
+                <div>
+                    <div class="text-4xl font-black text-[#1a0505] serif-font">4.8/5</div>
+                    <div class="text-sm text-gray-500 uppercase tracking-wider font-bold mt-1">Customer Rating</div>
+                </div>
+                <div class="hidden md:block w-px h-12 bg-gray-300"></div>
+                <div>
+                    <div class="text-4xl font-black text-[#1a0505] serif-font">24/7</div>
+                    <div class="text-sm text-gray-500 uppercase tracking-wider font-bold mt-1">Party Support</div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- MUSIC WIDGET -->
+    <div class="music-widget">
+        <audio id="bg-music" loop>
+            <source src="Party.mp3" type="audio/mpeg">
+        </audio>
+        <button onclick="toggleMusic()" class="music-btn" id="music-btn" title="Play Music">
+            <i class="fa-solid fa-music"></i>
+        </button>
+    </div>
+
+    <!-- CHATBOT WIDGET -->
+    <div class="chat-widget">
+        <div class="chat-popup" id="chat-popup">
+            <div class="chat-header">
+                <span>BYOB Assistant</span>
+                <button onclick="toggleChat()" class="text-white hover:text-gray-300"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-message">Hello! 👋 How can I help you elevate your party today?</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" class="chat-input" placeholder="Type a message..." onkeypress="handleChatKey(event)">
+                <button onclick="sendMessage()" class="send-btn"><i class="fa-solid fa-paper-plane text-sm"></i></button>
+            </div>
+        </div>
+        <button onclick="toggleChat()" class="chat-btn">
+            <i class="fa-solid fa-comments"></i>
+        </button>
+    </div>
+
+    <!-- PRODUCT DETAIL MODAL -->
+    <div id="product-detail-view" class="fixed inset-0 bg-[#fdfbf7] z-[90] overflow-y-auto pt-[120px]"> 
+        <div class="container mx-auto px-6 pb-20">
+            
+            <button onclick="closeProductPage()" class="mb-8 flex items-center gap-2 text-gray-500 hover:text-[#d4af37] transition font-bold uppercase tracking-wide text-sm">
+                <i class="fa-solid fa-arrow-left"></i> Back to Collection
+            </button>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <!-- Image Side -->
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 flex items-center justify-center">
+                    <img id="detail-image" src="" class="max-h-[500px] object-contain hover:scale-110 transition duration-700 cursor-zoom-in">
+                </div>
+
+                <!-- Info Side -->
+                <div class="flex flex-col justify-center">
+                    <span id="detail-category" class="text-[#d4af37] font-bold uppercase tracking-[0.2em] text-sm mb-4">Category</span>
+                    <h1 id="detail-name" class="text-5xl font-black serif-font text-[#1a0505] mb-2 leading-tight">Product Name</h1>
+                    
+                    <!-- Ratings -->
+                    <div class="flex items-center gap-2 mb-6 text-[#d4af37]">
+                        <div id="detail-stars"></div>
+                        <span class="text-gray-400 text-sm">(128 reviews)</span>
+                    </div>
+
+                    <div class="flex items-end gap-4 mb-6">
+                        <span class="text-4xl font-bold text-[#1a0505]">₹<span id="detail-price">0</span></span>
+                        <span class="text-green-600 font-bold text-sm mb-2"><i class="fa-solid fa-check"></i> In Stock</span>
+                    </div>
+
+                    <p id="detail-desc" class="text-gray-600 text-lg leading-relaxed mb-8 border-l-4 border-[#d4af37] pl-6">
+                        Description...
+                    </p>
+
+                    <!-- Delivery Checker -->
+                    <div class="mb-8 p-4 bg-white rounded-lg border border-gray-200">
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2"><i class="fa-solid fa-location-dot mr-1"></i> Check Delivery</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="pincode-input" placeholder="Enter Pincode" maxlength="6" class="border-b-2 border-gray-300 focus:border-[#d4af37] outline-none px-2 py-1 w-32 text-sm">
+                            <button onclick="checkDelivery()" class="text-sm font-bold text-[#d4af37] hover:underline">Check</button>
+                        </div>
+                        <p id="delivery-result" class="text-xs mt-2 font-bold text-green-700 hidden"></p>
+                    </div>
+
+                    <div class="flex gap-4 mb-12">
+                        <button id="detail-add-btn" class="flex-1 btn-gold-gradient py-4 rounded-xl text-xl font-bold shadow-xl">
+                            Add to Cart
+                        </button>
+                        <button id="detail-wishlist-btn" class="px-6 rounded-xl border-2 border-[#1a0505] text-[#1a0505] hover:bg-[#1a0505] hover:text-white transition flex items-center justify-center">
+                            <!-- SVG Heart Icon injected by JS -->
+                        </button>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
+                        <div class="text-center">
+                            <i class="fa-solid fa-truck-fast text-[#d4af37] text-2xl mb-2"></i>
+                            <p class="text-xs font-bold uppercase tracking-wide text-gray-500">Fast Shipping</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fa-solid fa-shield-halved text-[#d4af37] text-2xl mb-2"></i>
+                            <p class="text-xs font-bold uppercase tracking-wide text-gray-500">Secure Packaging</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fa-solid fa-rotate-left text-[#d4af37] text-2xl mb-2"></i>
+                            <p class="text-xs font-bold uppercase tracking-wide text-gray-500">Easy Returns</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scrollable Recommendations -->
+            <div class="mt-32 border-t border-gray-200 pt-16">
+                <h3 class="text-3xl font-bold text-[#1a0505] serif-font mb-10 text-center">You Might Also Like</h3>
+                <p class="text-center text-gray-400 mb-8 text-sm">Scroll to see more</p>
+                
+                <div id="related-products-grid" class="flex overflow-x-auto gap-6 pb-8 no-scrollbar snap-x px-4">
+                    <!-- Recommended products injected here -->
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-panel" class="fixed inset-y-0 right-0 w-full md:w-[450px] bg-white shadow-2xl transform translate-x-full z-[105] flex flex-col transition-transform duration-300">
+        <div class="p-6 bg-[#1a0505] text-white flex justify-between items-center shadow-md">
+            <h2 class="text-2xl font-bold serif-font text-[#d4af37]">Your Cart</h2>
+            <button onclick="toggleCart()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-times text-xl"></i></button>
+        </div>
+        
+        <div id="cart-items" class="flex-grow overflow-y-auto p-6 space-y-6 bg-[#f9f7f2]">
+            <div class="text-center py-20 text-gray-400">
+                <i class="fa-solid fa-cart-shopping text-6xl mb-4 opacity-30"></i>
+                <p>Your cart is currently empty.</p>
+            </div>
+        </div>
+
+        <!-- Cart Footer -->
+        <div class="p-6 bg-white border-t border-gray-100 shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
+            <div class="flex gap-2 mb-4">
+                <input type="text" id="coupon-code" placeholder="Coupon Code" class="flex-grow border border-gray-300 p-2 rounded focus:outline-none focus:border-[#d4af37] uppercase text-sm">
+                <button onclick="applyDiscount()" class="bg-[#1a0505] text-[#d4af37] px-4 py-2 rounded font-bold hover:bg-[#d4af37] hover:text-[#1a0505] transition text-sm">Apply</button>
+            </div>
+
+            <div class="space-y-2 mb-6">
+                <div class="flex justify-between text-gray-600">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">₹0.00</span>
+                </div>
+                <div id="discount-row" class="flex justify-between text-green-600 font-bold hidden">
+                    <span>Discount (15%)</span>
+                    <span id="cart-discount">-₹0.00</span>
+                </div>
+                <div class="flex justify-between text-xl font-black text-[#1a0505] pt-2 border-t border-gray-100">
+                    <span>Total</span>
+                    <span id="cart-final-total">₹0.00</span>
+                </div>
+            </div>
+
+            <button onclick="initiateCheckout()" class="w-full btn-gold-gradient py-4 rounded-xl text-lg font-bold shadow-lg">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Wishlist Sidebar -->
+    <div id="wishlist-panel" class="fixed inset-y-0 right-0 w-full md:w-[450px] bg-white shadow-2xl transform translate-x-full z-[105] flex flex-col transition-transform duration-300">
+        <div class="p-6 bg-[#1a0505] text-white flex justify-between items-center shadow-md">
+            <h2 class="text-2xl font-bold serif-font text-[#d4af37]">Your Wishlist</h2>
+            <button onclick="toggleWishlistPanel()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-times text-xl"></i></button>
+        </div>
+        <div id="wishlist-items" class="flex-grow overflow-y-auto p-6 space-y-6 bg-[#f9f7f2]">
+            <div class="text-center py-20 text-gray-400">
+                <i class="fa-regular fa-heart text-6xl mb-4 opacity-30"></i>
+                <p>Your wishlist is empty.</p>
+            </div>
+        </div>
+        <div class="p-6 bg-white border-t border-gray-100 text-center">
+            <button onclick="toggleWishlistPanel()" class="text-[#1a0505] font-bold underline">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Backdrop -->
+    <div id="backdrop" onclick="closeAllOverlays()" class="fixed inset-0 bg-[#1a0505]/80 backdrop-blur-sm z-[102] hidden transition-opacity duration-300"></div>
+
+    <!-- Checkout Modal -->
+    <div id="payment-modal" class="fixed inset-0 z-[110] hidden flex items-center justify-center px-4 pointer-events-none">
+        <div class="bg-white rounded-2xl p-10 max-w-sm w-full text-center relative pointer-events-auto shadow-2xl transform transition-all scale-100">
+            <div id="payment-processing">
+                <div class="loader mx-auto mb-6"></div>
+                <h3 class="text-2xl font-bold mb-2 text-[#1a0505]">Processing...</h3>
+                <p class="text-gray-500">Connecting to secure gateway.</p>
+            </div>
+            <div id="payment-success" class="hidden">
+                <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl shadow-inner">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2 text-[#1a0505]">Order Confirmed! Check your UPI app for payment. </h3>
+                <p class="text-gray-500 mb-8">Get the glasses ready. We're on our way.</p>
+                <button onclick="closePayment()" class="w-full bg-[#1a0505] text-white py-3 rounded-xl font-bold">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="fixed inset-0 z-[110] hidden flex items-center justify-center px-4 pointer-events-none">
+        <div class="bg-white rounded-2xl overflow-hidden max-w-md w-full relative pointer-events-auto shadow-2xl flex flex-col">
+            <div class="bg-[#1a0505] p-6 text-center">
+                <h2 class="text-2xl font-bold serif-font text-[#d4af37]">Join the Club</h2>
+            </div>
+            <div class="p-8">
+                <div id="auth-form-container">
+                    <form onsubmit="registerUser(event)" class="space-y-5">
+                        <input type="text" required class="w-full border-b-2 border-gray-200 p-3 focus:outline-none focus:border-[#d4af37] transition" placeholder="Full Name">
+                        <input type="email" required class="w-full border-b-2 border-gray-200 p-3 focus:outline-none focus:border-[#d4af37] transition" placeholder="Email Address">
+                        <input type="password" required class="w-full border-b-2 border-gray-200 p-3 focus:outline-none focus:border-[#d4af37] transition" placeholder="Password">
+                        <button type="submit" class="w-full btn-gold-gradient py-4 rounded-xl font-bold mt-4">Create Membership</button>
+                    </form>
+                </div>
+                <div id="auth-success-container" class="hidden text-center py-8">
+                    <h3 class="text-3xl font-black serif-font text-[#1a0505] mb-2">Welcome!</h3>
+                    <p class="text-gray-500 mb-8">You are now a BYOB member.</p>
+                    <button onclick="closeAuthModal()" class="w-full btn-gold-gradient py-3 rounded-xl font-bold">Let's Shop</button>
+                </div>
+            </div>
+            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-white/50 hover:text-white"><i class="fa-solid fa-times text-xl"></i></button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#1a0505] text-white border-t-4 border-[#d4af37] pt-16 pb-8">
+        <div class="container mx-auto px-6 grid md:grid-cols-4 gap-10">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="h-10 border-[#d4af37]">
+                        <img src="LOGO.png" class="w-full h-full object-contain p-1">
+                    </div>
+                    <span class="text-2xl font-black serif-font text-[#d4af37]">BYOB</span>
+                </div>
+                <p class="text-gray-400 max-w-sm leading-relaxed">Redefining the art of hosting. We provide the premium essentials so you can focus on the celebration.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6 text-[#d4af37]">Explore</h4>
+                <ul class="space-y-3 text-gray-400">
+                    <li><a href="#" class="hover:text-white transition">Mixers & Tonics</a></li>
+                    <li><a href="#" class="hover:text-white transition">Premium Glassware</a></li>
+                    <li><a href="#" class="hover:text-white transition">Bar Tools</a></li>
+                    <li><a href="#" class="hover:text-white transition">Garnish Collection</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6 text-[#d4af37]">Legal</h4>
+                <ul class="space-y-3 text-gray-400">
+                    <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-white transition">Return Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-gray-600 mt-16 pt-8 border-t border-gray-800 text-sm">
+            &copy; 2023 BYOB Party Essentials. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+     <!-- JavaScript Logic -->
+<script src="app.js"></script>
+
+</body>
+</html>
+
+    
+</body>
+</html>
